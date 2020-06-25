@@ -1,0 +1,32 @@
+
+strdim_ipaddr 16
+ipaddr[0] = '192.168.0.1'
+ipaddr[1] = '192.168.0.2'
+ipaddr[2] = '192.168.0.3'
+ipaddr[3] = '192.168.0.4'
+ipaddr[4] = '192.168.0.5'
+ipaddr[5] = '192.168.0.6'
+ipaddr[6] = '192.168.0.7'
+ipaddr[7] = '192.168.0.8'
+ipaddr[8] = '192.168.0.9'
+ipaddr[9] = '192.168.0.10'
+ipaddr[10] = '192.168.0.11'
+ipaddr[11] = '192.168.0.12'
+ipaddr[12] = '192.168.0.13'
+ipaddr[13] = '192.168.0.14'
+ipaddr[14] = '192.168.0.15'
+ipaddr[15] = '192.168.0.16'
+
+;----------------------------------------------------
+
+for i 0 15
+
+COMMAND = 'ssh demo_user@'
+strconcat COMMAND strdim_ipaddr[i]
+
+sendln COMMAND
+wait '~]$ '
+sendln 'uname -n'
+wait '~]$ '
+sendln 'exit'
+next
